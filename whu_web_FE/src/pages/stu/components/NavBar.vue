@@ -132,6 +132,11 @@ export default {
           name: '/Tools',
           navItem: '更多工具',
           navItemIcon: 'el-icon-s-flag'
+        },
+        {
+          name: '/Settings',
+          navItem: '肌肉知识',
+          navItemIcon: 'el-icon-place'
         }
       ],
       LoginCondition: false, // use this to judge whether it have been login
