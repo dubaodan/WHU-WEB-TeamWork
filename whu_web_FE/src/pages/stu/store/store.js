@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
     status: '',
     token: localStorage.getItem('token') || '',
     user: {},
-    // use for Course part
+    // use for Tools part
     Course: '',
     Chapter: '',
     isLogin: localStorage.getItem('isLogin') || ''

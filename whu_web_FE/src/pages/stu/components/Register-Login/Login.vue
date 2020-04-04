@@ -15,8 +15,8 @@ Vue.prototype.$axios = axios;
       </div>
       <div class="item">
         <el-radio-group v-model="radio">
-        <el-radio v-model="radio" label="stu">学生</el-radio>
-        <el-radio v-model="radio" label="tea">老师</el-radio>
+        <el-radio v-model="radio" label="stu">顾客</el-radio>
+        <el-radio v-model="radio" label="tea">管理员</el-radio>
         </el-radio-group>
       </div>
       <el-button class="login_bt" type="primary" @click="login" round :loading="isBtnLoading">登录</el-button>

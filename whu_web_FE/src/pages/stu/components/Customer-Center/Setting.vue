@@ -5,7 +5,7 @@
       <el-image
         slot="stu_picture"
         style="width: 100px; height: 100px"
-        :src="require('@/assets/Stu_Default_Picture.jpeg')"
+        :src="require('@/assets/Customer_Default_Picture.jpeg')"
         fit="fit"></el-image>
     </SideBar>
   </el-col>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SideBar from '@/pages/stu/components/Student-Center/SideBar'
+import SideBar from '@/pages/stu/components/Customer-Center/SideBar'
 export default {
   name: 'Setting',
   components: {

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ProblemPreview from '../../components/Problems/ProblemPreview'
+import ProblemPreview from '../../components/Prevention/Prevention'
 export default {
   name: 'Problems',
   components: {ProblemPreview}

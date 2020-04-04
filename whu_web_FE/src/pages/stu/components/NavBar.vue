@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-image  :src="require('@/assets/logo.png')" fit="fit" class="barImg"></el-image>
+    <el-image :src="require('@/assets/logo.jpeg')" fit="fit" class="barImg" ></el-image>
   <el-menu :default-active="this.$route.path" router mode="horizontal" class="bar">
 <!--    <el-menu-item>-->
 <!--      <a href="https://www.whu.edu.cn/"><el-image  :src="require('@/assets/logo.png')" fit="fit" style="height: 65px"></el-image></a>-->
@@ -12,12 +12,6 @@
       {{ item.navItem }}
     </el-menu-item >
 
-    <el-submenu index="About">
-      <template slot="title"><i class="el-icon-star-on"></i>
-        <span>About</span></template>
-      <el-menu-item index="/Judger"><i class="el-icon-question"></i><span>About</span></el-menu-item>
-      <el-menu-item index="/Us"><i class="el-icon-info"></i><span>Us</span></el-menu-item>
-    </el-submenu>
     <div class="right_part">
     <el-button v-show="!  isLogin () " type="primary" @click="registerVisible = true">注册</el-button>
     <el-button v-show="!  isLogin () " type="primary" @click="loginVisible = true">登录</el-button>
@@ -31,11 +25,9 @@
 <!--      用于用户选项的下拉列表-->
     <el-dropdown>
     <span class="el-dropdown-link" v-show="  isLogin () ">
-      <i class="el-icon-user"></i>Stu_Name<i class="el-icon-arrow-down el-icon--right"></i>
+      <i class="el-icon-user"></i>Customer_Name<i class="el-icon-arrow-down el-icon--right"></i>
     </span>
     <el-dropdown-menu slot="dropdown" >
-      <el-dropdown-item @click.native="Stu_Home">Home</el-dropdown-item>
-      <el-dropdown-item @click.native="Stu_Submission">Submissions</el-dropdown-item>
       <el-dropdown-item @click.native="Setting">Setting</el-dropdown-item>
       <el-dropdown-item @click.native="Loginout">Log out</el-dropdown-item>
     </el-dropdown-menu>
@@ -99,12 +91,6 @@ export default {
     //   //   return false
     //   // }
     // },
-    Stu_Home () {
-      this.$router.push({path: '/Stu_Home'})
-    },
-    Stu_Submission () {
-      this.$router.push({path: '/Stu_Submission'})
-    },
     Setting () {
       this.$router.push({path: '/Setting/Profile'})
     },
@@ -128,23 +114,23 @@ export default {
       navList: [
         {
           name: '/Home',
-          navItem: 'Home',
+          navItem: '首页',
           navItemIcon: 'el-icon-s-home'
         },
         {
-          name: '/Contests',
-          navItem: 'Contests',
+          name: '/Food',
+          navItem: '饮食指南',
           navItemIcon: 'el-icon-trophy'
 
         },
         {
-          name: '/Problems',
-          navItem: 'Problems',
+          name: '/Prevention',
+          navItem: '疾病预防',
           navItemIcon: 'el-icon-s-promotion'
         },
         {
-          name: '/Courses',
-          navItem: 'Courses',
+          name: '/Tools',
+          navItem: '更多工具',
           navItemIcon: 'el-icon-s-flag'
         }
       ],

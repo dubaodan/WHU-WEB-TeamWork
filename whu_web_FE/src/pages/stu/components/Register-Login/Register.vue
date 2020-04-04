@@ -18,8 +18,8 @@
       <el-radio-group v-model="radio">
         // v-model 绑定变量，意味着其值为Radio的label属性的值
         // label 可以是String、Number或Boolean
-        <el-radio v-model="radio" label="stu">学生</el-radio>
-        <el-radio v-model="radio" label="tea">老师</el-radio>
+        <el-radio v-model="radio" label="stu">顾客</el-radio>
+        <el-radio v-model="radio" label="tea">管理员</el-radio>
       </el-radio-group>
     </div>
     <div>
