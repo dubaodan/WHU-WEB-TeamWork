@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-image :src="require('@/assets/logo.jpeg')" fit="fit" class="barImg" ></el-image>
+    <el-image :src="require('@/assets/logo.jpeg')" fit="fit" class="barImg" style="height: 50px; width : 200px"></el-image>
   <el-menu :default-active="this.$route.path" router mode="horizontal" class="bar">
 <!--    <el-menu-item>-->
 <!--      <a href="https://www.whu.edu.cn/"><el-image  :src="require('@/assets/logo.png')" fit="fit" style="height: 65px"></el-image></a>-->
