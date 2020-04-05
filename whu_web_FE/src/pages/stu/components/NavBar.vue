@@ -51,9 +51,7 @@ export default {
     // 弹窗退出函数
     isLogin () {
       let tem = !!localStorage.getItem('isLogin')
-      console.log('aaa')
       if (tem === true) {
-        console.log('aaa')
         this.LoginCondition = true
         return true
       } else {
