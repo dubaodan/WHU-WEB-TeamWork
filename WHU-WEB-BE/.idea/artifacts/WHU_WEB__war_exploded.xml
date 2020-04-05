@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="WHU-WEB-后端:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/WHU_WEB__war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="WHU-WEB-BE/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WHU-WEB-BE" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

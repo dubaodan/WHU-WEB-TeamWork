@@ -31,7 +31,7 @@ export default {
         fluid: true,
         sources: [{
           // url地址
-          src: 'http://vjs.zencdn.net/v/oceans.mp4',
+          src: 'http://localhost:8081/chest.mp4',
           type: 'video/mp4'
         }],
         // 你的封面地址
