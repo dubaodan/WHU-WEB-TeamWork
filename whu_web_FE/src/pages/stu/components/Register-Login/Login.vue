@@ -2,7 +2,7 @@ import axios from 'axios';
 Vue.prototype.$axios = axios;
 //登录界面
 <template>
-  <div class="login">
+  <div class="login" >
     <div class="outer_label">
 <!--      <img class="inner_label login_logo" src="src/assets/logo.png">-->
     </div>
@@ -79,7 +79,6 @@ export default {
       password: '',
       isBtnLoading: false,
       radio: 'stu'
-
     }
   }
 }
