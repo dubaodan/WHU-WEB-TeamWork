@@ -1,10 +1,8 @@
-import axios from 'axios';
-Vue.prototype.$axios = axios;
 //登录界面
 <template>
   <div class="login" >
     <div class="outer_label">
-<!--      <img class="inner_label login_logo" src="src/assets/logo.png">-->
+<!--      <img class="inner_label logaxiosin_logo" src="src/assets/logo.png">-->
     </div>
     <div class="login_form">
       <div id="ID" class="item">
@@ -27,6 +25,8 @@ Vue.prototype.$axios = axios;
 </template>
 
 <script>
+import axios from 'axios'
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 export default {
   name: 'Login',
   methods: {
@@ -50,18 +50,40 @@ export default {
       }
       if (!this.password) {
         this.$message.error('请输入密码')
+        return
       }
       // eslint-disable-next-line no-undef
       let params = {
         'username': this.ID,
         'password': this.password
       }
-      this.$store.dispatch('Login', params)
-        .then(() => {
-          this.$router.push({ path: '/' })
+      var param = new URLSearchParams()
+      param.append('username', this.ID)
+      param.append('password', this.password)
+      axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8081/login',
+        contentType: 'text',
+        dataType: 'text/html;charset=UTF-8',
+        data: param
+      })
+        .then((response) => {
+          console.log(response.data)
+          if (response.data === 'Success') {
+            this.$message.success('登陆成功')
+            this.$store.dispatch('Login', params)
+              .then(() => {
+                this.$router.push({ path: '/' })
+              })
+              .catch((error) => {
+                console.log(error.response)
+              })
+          } else {
+            this.$message.error('用户名或密码错误')
+          }
         })
-        .catch((error) => {
-          console.log(error.response)
+        .catch(function (error) {
+          console.log(error)
         })
     }
   },
