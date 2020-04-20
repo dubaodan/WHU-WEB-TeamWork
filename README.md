@@ -1,7 +1,7 @@
 # WHU-WEB-TeamWork
 
 ## 设计草图
-[墨刀](https://free.modao.cc/app/6a5de23b73a3a4a9c0c81ea5ca5b776109211ef4?simulator_type=outside_artboard&sticky). 
+[墨刀链接](https://free.modao.cc/app/6a5de23b73a3a4a9c0c81ea5ca5b776109211ef4?simulator_type=outside_artboard&sticky). 
 
 ## 分工：
 ### 前端
@@ -23,8 +23,10 @@
 
 ## 计划时间：10-15周
 - 10-11周：界面初步设计，前端框架以及后台数据库服务器的搭建
-- 11-12周：前后端各自基本功能函数的实现
-- 12-13周：前后端以及数据库数据流通，联合调试
+- 11-12周：前后端设定数据以及接口格式
+- 12-14周：前后端各自基本功能函数的实现，请求接收函数的完成
+- 14-15周：前后端以及数据库数据流通，联合调试
+
 
 
 
