@@ -10,6 +10,7 @@ import Article from '@/pages/stu/components/Muscle-Center/Article'
 import Video from '@/pages/stu/components/Muscle-Center/Video'
 import Discuss from '@/pages/stu/components/Muscle-Center/Discuss'
 import Prevention from '../views/Prevention/Prevention'
+import PreventionClass from '@/pages/stu/components/Prevention/PreventionClass'
 import Food from '@/pages/stu/views/Food/Food'
 import FoodClass from '@/pages/stu/components/Food/FoodClass'
 import Tools from '@/pages/stu/views/Tools/Tools'
@@ -27,6 +28,10 @@ export default[
   {
     path: '/Prevention',
     component: Prevention
+  },
+  {
+    path: '/Prevention/:id',
+    component: PreventionClass
   },
   {
     path: '/Tools',
