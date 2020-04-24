@@ -50,11 +50,11 @@ export default {
 <style scoped>
 .el-input{
   width: 30%;
-  margin: 5%;
+  margin: 3%;
 
 }
 .el-row{
-  margin: 5%;
+  margin: 3%;
 }
 
 </style>
