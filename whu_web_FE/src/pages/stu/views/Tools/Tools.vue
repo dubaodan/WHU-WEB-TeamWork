@@ -21,7 +21,7 @@ export default {
         {
           ImgSrc: 'https://s1.ax1x.com/2020/04/22/Jt2JXj.gif',
           Title: '体脂率',
-          Name: 'tizhilv',
+          Name: 'BFR',
           Description: '体脂率是指人体内脂肪重量在人体总体重中所占的比例，又称体脂百分数，它反映人体内脂肪含量的多少。'
         },
         {

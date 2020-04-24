@@ -13,7 +13,7 @@ import Prevention from '../views/Prevention/Prevention'
 import Food from '@/pages/stu/views/Food/Food'
 import Tools from '@/pages/stu/views/Tools/Tools'
 import BMI from '@/pages/stu/components/Tools/BMI.vue'
-
+import BFR from '@/pages/stu/components/Tools/BFR'
 export default[
   {
     path: '/',
@@ -34,6 +34,10 @@ export default[
   {
     path: '/Tools/BMI',
     component: BMI
+  },
+  {
+    path: '/Tools/BFR',
+    component: BFR
   },
   {
     path: '/Food',
