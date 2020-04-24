@@ -1,7 +1,7 @@
 <template>
 <div>
-  体重(kg)<el-input v-model="input_Weight" placeholder="请输入体重"></el-input>
-  身高(m)<el-input v-model="input_Height" min='1' placeholder="请输入身高"></el-input>
+  体重(kg)<el-input v-model="input_Weight"  placeholder="请输入体重"></el-input>
+  身高(m)<el-input v-model="input_Height"  placeholder="请输入身高"></el-input>
   <el-button type="primary" plain @click="calculate">确认</el-button>
   <el-row>
     BMI指数为：{{output_result}}
@@ -35,9 +35,13 @@ export default {
   },
   methods: {
     calculate: function () {
-      var Weight = parseFloat(this.input_Weight)
-      var Height = parseFloat(this.input_Height)
+      var Weight = this.input_Weight - 0
+      var Height = this.input_Height - 0
       this.output_result = String(Weight / (Height * Height))
+      if (this.output_result === '' || this.output_result === 'Infinity' || this.output_result === 'NaN' || Weight <= 0 || Height <= 0) {
+        this.output_result = ''
+        alert('输入无效')
+      }
     }
   }
 }
