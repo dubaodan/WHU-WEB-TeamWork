@@ -1,6 +1,6 @@
 <template>
   <el-card >
-    <img :src=toolInfo.ImgSrc class="image">
+    <img :src=toolInfo.ImgSrc class="image" @click="Linkto(toolInfo.Name)">
     <div style="padding: 10px;">
       <span class="Title">{{toolInfo.Title}}</span>
       <div class="bottom clearfix">
@@ -17,15 +17,18 @@ export default {
     toolInfo: {
       ImgSrc: String,
       Title: String,
+      Name: String,
       Description: String
     }
   },
   data () {
     return {
-      imgsrc: this.toolInfo.ImgSrc
     }
   },
   methods: {
+    Linkto: function (url) {
+      this.$router.push('/Tools/' + url)
+    }
   }
 }
 </script>

@@ -12,6 +12,8 @@ import Discuss from '@/pages/stu/components/Muscle-Center/Discuss'
 import Prevention from '../views/Prevention/Prevention'
 import Food from '@/pages/stu/views/Food/Food'
 import Tools from '@/pages/stu/views/Tools/Tools'
+import BMI from '@/pages/stu/components/Tools/BMI.vue'
+
 export default[
   {
     path: '/',
@@ -28,6 +30,10 @@ export default[
   {
     path: '/Tools',
     component: Tools
+  },
+  {
+    path: '/Tools/BMI',
+    component: BMI
   },
   {
     path: '/Food',
