@@ -11,6 +11,7 @@ import Video from '@/pages/stu/components/Muscle-Center/Video'
 import Discuss from '@/pages/stu/components/Muscle-Center/Discuss'
 import Prevention from '../views/Prevention/Prevention'
 import Food from '@/pages/stu/views/Food/Food'
+import FoodClass from '@/pages/stu/components/Food/FoodClass'
 import Tools from '@/pages/stu/views/Tools/Tools'
 import BMI from '@/pages/stu/components/Tools/BMI.vue'
 import BFR from '@/pages/stu/components/Tools/BFR'
@@ -42,6 +43,10 @@ export default[
   {
     path: '/Food',
     component: Food
+  },
+  {
+    path: '/Food/:id',
+    component: FoodClass
   },
   {
     path: '/Login',
