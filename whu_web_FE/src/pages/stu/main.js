@@ -20,6 +20,10 @@ import 'codemirror/lib/codemirror.css'
 // eslint-disable-next-line import/no-duplicates
 import Router from 'vue-router'
 // 注意样式文件需要单独引入
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+Vue.use(VideoPlayer)
 // 调用插件
 Vue.use(VueCodeMirror)
 Vue.use(ElementUI)
