@@ -1,0 +1,20 @@
+{
+    "muscle":[
+      {
+          "video":"xxx/xxx/胸肌.mp4",
+          "name":"胸肌",
+          "description":"我是简介",
+          "method":"我是方法",
+          "user":[
+            {
+                "name":"用户1",
+                "comment":"我是评论"
+            },
+            {
+                "name":"用户2",
+                "comment":"我是评论"
+            }
+        ]
+      }
+    ]
+}

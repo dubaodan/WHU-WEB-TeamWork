@@ -4,7 +4,6 @@
 import axios from 'axios'
 import Vue from 'vue'
 import App from './App'
-
 // 引入路由
 // eslint-disable-next-line import/no-duplicates
 import VueRouter from 'vue-router'
@@ -21,6 +20,9 @@ import 'codemirror/lib/codemirror.css'
 import Router from 'vue-router'
 // 注意样式文件需要单独引入
 import VideoPlayer from 'vue-video-player'
+
+Vue.prototype.$axios = axios
+
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 Vue.use(VideoPlayer)
