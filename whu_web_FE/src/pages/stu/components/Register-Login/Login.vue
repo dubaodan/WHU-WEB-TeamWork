@@ -27,6 +27,7 @@ Vue.prototype.$axios = axios;
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Login',
   methods: {
@@ -51,11 +52,10 @@ export default {
       if (!this.password) {
         this.$message.error('请输入密码')
       }
-      // eslint-disable-next-line no-undef
-      let params = {
-        'username': this.ID,
-        'password': this.password
-      }
+
+      var params = new URLSearchParams()
+      params.append('username', this.ID)
+      params.append('password', this.password)
       this.$store.dispatch('Login', params)
         .then(() => {
           this.$router.push({ path: '/' })
@@ -63,6 +63,28 @@ export default {
         .catch((error) => {
           console.log(error.response)
         })
+      axios({
+
+        method: 'post',
+        url: 'http://127.0.0.1:8080/MuscleRTest_war_exploded/LoginServlet',
+        contentType: 'text',
+        dataType: 'json',
+        data: params
+
+      }).then((response) => {
+        let data = response.data
+        console.log(data)
+        if (data === 'OK') {
+          console.log(this)
+          this.visible = false
+          this.close()
+          // window.visible(false)
+        } else {
+          this.$message.error('用户名或密码错误')
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   },
   // created () {
