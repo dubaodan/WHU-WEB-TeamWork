@@ -31,6 +31,27 @@ export default {
     }
   }
 }
+
+// import axios from 'axios'
+// export default{
+//   data () {
+//     return {
+//       res: '' // 创建对象
+//     }
+//   },
+//   mounted () {
+//     let params = new URLSearchParams()
+//     params.append('id', this.$route.query)
+//     axios({
+//       method: 'post',
+//       url: '',
+//       data: params
+//     }).then((response) => {
+//       this.res = response.data
+//     })
+//   }
+// }
+
 </script>
 
 <style scoped>

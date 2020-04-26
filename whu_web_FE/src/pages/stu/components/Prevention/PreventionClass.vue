@@ -7,6 +7,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
   name: 'PreventionClass',
   data () {
@@ -44,6 +45,22 @@ export default {
   },
   mounted () {
     // 这里应该是要发送请求 获取对应title的一系列数据
+  //   data () {
+  //     return {
+  //       res: '' // 创建对象
+  //     }
+  //   },
+  //   mounted () {
+  //     let params = new URLSearchParams()
+  //     params.append('id', this.$route.query)
+  //     axios({
+  //       method: 'post',
+  //       url: '',
+  //       data: params
+  //     }).then((response) => {
+  //       this.res = response.data
+  //     })
+  //   }
     if (this.title === 'LumbarMuscleDegeneration') {
       this.items = this.LumbarMuscleDegeneration
     }
