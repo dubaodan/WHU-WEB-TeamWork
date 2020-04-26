@@ -1,6 +1,6 @@
 <template>
   <el-row class="tac">
-  <el-col :span="center" >
+  <el-col >
     <SlideBar class="slide">
     </SlideBar>
   </el-col>

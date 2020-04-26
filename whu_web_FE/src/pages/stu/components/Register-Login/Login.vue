@@ -1,6 +1,6 @@
 //登录界面
 <template>
-  <div class="login">
+  <div class="login" >
     <div class="outer_label">
 <!--      <img class="inner_label logaxiosin_logo" src="src/assets/logo.png">-->
     </div>
@@ -85,6 +85,28 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+      axios({
+
+        method: 'post',
+        url: 'http://127.0.0.1:8080/MuscleRTest_war_exploded/LoginServlet',
+        contentType: 'text',
+        dataType: 'json',
+        data: params
+
+      }).then((response) => {
+        let data = response.data
+        console.log(data)
+        if (data === 'OK') {
+          console.log(this)
+          this.visible = false
+          this.close()
+          // window.visible(false)
+        } else {
+          this.$message.error('用户名或密码错误')
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   },
   // created () {
@@ -101,7 +123,6 @@ export default {
       password: '',
       isBtnLoading: false,
       radio: 'stu'
-
     }
   }
 }
