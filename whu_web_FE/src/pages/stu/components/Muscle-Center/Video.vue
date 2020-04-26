@@ -10,9 +10,11 @@
 </template>
 
 <script>
-export default {
+import axios from 'axios'
+export default{
   data () {
     return {
+      res: '',
       playerOptions: {
         // 播放速度
         playbackRates: [0.5, 1.0, 1.5, 2.0],
@@ -31,7 +33,7 @@ export default {
         fluid: true,
         sources: [{
           // url地址
-          src: 'http://localhost:8081/chest.mp4',
+          src: this.res.data.muscle.video,
           type: 'video/mp4'
         }],
         // 你的封面地址
@@ -46,8 +48,18 @@ export default {
           fullscreenToggle: true
         }
       }
-
     }
+  },
+  mounted () {
+    let params = new URLSearchParams()
+    params.append('id', this.$route.query)
+    axios({
+      method: 'post',
+      url: '我是servlet',
+      data: params
+    }).then((response) => {
+      this.res = response.data
+    })
   }
 }
 </script>
