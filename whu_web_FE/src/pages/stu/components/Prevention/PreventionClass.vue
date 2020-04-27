@@ -1,7 +1,7 @@
 <template>
   <el-collapse v-model="activeNames" @change="handleChange"  >
-    <el-collapse-item v-for="(value, name,index) in items" v-bind:key="index" :title=name :name=index>
-      <span v-html=value></span>
+    <el-collapse-item v-for="(value,name,index) in items" v-bind:key="index" :title=name :name=index>
+      <span v-html="value"></span>
     </el-collapse-item>
   </el-collapse>
 </template>
@@ -40,7 +40,15 @@ export default {
                 '过软的床垫不能保持脊柱的正常生理曲度，所以最好在木板上加一张10厘米厚的软垫。\n' +
                 '7.注意减肥\n' +
                 '控制体重，身体过于肥胖，必然给腰部带来额外负担，特别是中年人和妇女产后，为易于发胖的时期，节制饮食，加强锻炼。'
-          }
+          },
+      Fasciitis: {'疾病名称': '筋膜炎',
+        '病因': '筋膜炎是指肌肉筋膜附着在骨胳部位发生无菌性炎症，目前筋膜炎的病因尚不明确，可能与过度、过长时间牵拉某些肌肉有关，即积累性劳损，也可能与受寒、创伤、免疫因素和血管炎症有关。当机体受到风寒侵袭、疲劳、外伤或睡眠位置不当等外界不良因素刺激时，可以诱发筋膜炎的症状加重，呈急性发作状态。',
+        '征兆': '多表现为发病部位疼痛，多为酸痛不适，肌肉僵硬板滞，或有重压感。晨起或天气变化及受凉后症状加重，活动后则疼痛减轻，常反复发作。急性发作时，局部肌肉紧张、痉挛，活动受限。由于在急性期没有得到彻底的治疗而转入慢性，或者由于患者受到反复的劳损、风寒等不良刺激，可以反复出现持续或者间断的慢性肌肉疼痛、酸软无力等症状。体检时可在患处触摸到固定压痛点，位置常固定在肌肉的起止点附近或两组不同方向的肌肉交接处，压痛点深部可摸到肿胀的痛性肌索条',
+        '预防': '1.组织病理活检\n' +
+            '做痛性结缔组织的活检，可见皮下脂肪、肌筋膜或骨膜等结缔组织有炎性水肿和增生。\n' +
+            '2.其他检查\n' +
+            '实验室检查抗“O”或血沉正常或稍高。磁共振检查，腰背部皮下可见条片状长T1长T2信号，边界较清，为渗出的液体信号。\n'
+      }
     }
   },
   mounted () {
@@ -64,6 +72,9 @@ export default {
     if (this.title === 'LumbarMuscleDegeneration') {
       this.items = this.LumbarMuscleDegeneration
     }
+    if (this.title === 'Fasciitis') {
+      this.items = this.Fasciitis
+    }
   },
   methods: {
     handleChange (val) {
@@ -76,5 +87,7 @@ export default {
 <style scoped>
 span{
   font-size: large;
+  text-align: left;
+  white-space: pre-line;
 }
 </style>
