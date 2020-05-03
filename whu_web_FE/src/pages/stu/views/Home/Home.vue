@@ -46,6 +46,34 @@
     <img id="female-background" :src="require('@/assets/female/Female-Figures.png')">
     <img id="female-pecs" :src="require('@/assets/female/female-pecs.png')" @click="skip('/Settings/Article')">
     <img id="female-quads-a" :src="require('@/assets/female/female-quads-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-quads-b" :src="require('@/assets/female/female-quads-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-abdominals" :src="require('@/assets/female/female-abdominals.png')" @click="skip('/Settings/Article')">
+    <img id="female-biceps-a" :src="require('@/assets/female/female-biceps-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-biceps-b" :src="require('@/assets/female/female-biceps-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-traps-a" :src="require('@/assets/female/female-traps-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-traps-b" :src="require('@/assets/female/female-traps-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-shoulders-a" :src="require('@/assets/female/female-deltoids-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-shoulders-b" :src="require('@/assets/female/female-deltoids-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-forearm-a" :src="require('@/assets/female/female-forearms-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-forearm-b" :src="require('@/assets/female/female-forearms-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-calves-a" :src="require('@/assets/female/female-calves-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-calves-b" :src="require('@/assets/female/female-calves-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-traps-a" :src="require('@/assets/female/female-traps-C.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-traps-b" :src="require('@/assets/female/female-traps-D.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-shoulders-a" :src="require('@/assets/female/female-deltoids-C.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-shoulders-b" :src="require('@/assets/female/female-deltoids-D.png')" @click="skip('/Settings/Article')">
+    <img id="female-triceps-a" :src="require('@/assets/female/female-triceps-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-triceps-b" :src="require('@/assets/female/female-triceps-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-calves-a" :src="require('@/assets/female/female-calves-C.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-calves-b" :src="require('@/assets/female/female-calves-D.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-hamstrings-a" :src="require('@/assets/female/female-hamstrings-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-hamstrings-b" :src="require('@/assets/female/female-hamstrings-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-lats-a" :src="require('@/assets/female/female-lats-A.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-lats-b" :src="require('@/assets/female/female-lats-B.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-lower" :src="require('@/assets/female/female-lowerback.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-glutes" :src="require('@/assets/female/female-glutes.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-forearms-a" :src="require('@/assets/female/female-forearms-C.png')" @click="skip('/Settings/Article')">
+    <img id="female-back-forearms-b" :src="require('@/assets/female/female-forearms-D.png')" @click="skip('/Settings/Article')">
   </div>
   </div>
 </div>
