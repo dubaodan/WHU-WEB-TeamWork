@@ -25,6 +25,8 @@ Vue.prototype.$axios = axios
 
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
+// 使用mockjs
+require('../../mock')
 Vue.use(VideoPlayer)
 // 调用插件
 Vue.use(VueCodeMirror)

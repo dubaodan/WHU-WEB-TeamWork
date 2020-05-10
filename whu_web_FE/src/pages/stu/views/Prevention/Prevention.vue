@@ -10,6 +10,9 @@
 
 <script>
 import PreventDetail from '@/pages/stu/components/Prevention/Prevention'
+// eslint-disable-next-line no-unused-vars
+import axios from 'axios'
+import '../../../../mock'
 export default {
   name: 'Prevention',
   components: {
@@ -17,6 +20,7 @@ export default {
   },
   data () {
     return {
+      // DiseaseList: ''
       DiseaseList: [
         {
           ImgSrc: 'https://s1.ax1x.com/2020/04/24/JrB9f0.jpg',
