@@ -61,6 +61,18 @@ export default {
       ]
     }
   }
+  // mounted () {
+  //   let that = this
+  //   axios({
+  //     method: 'get',
+  //     url: 'http://localhost:8080/WHU_WEB_BE_war/GetIllList'
+  //   }).then((response) => {
+  //     console.log(response.data)
+  //     that.DiseaseList = response.data
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
 }
 </script>
 

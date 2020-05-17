@@ -7,7 +7,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   name: 'PreventionClass',
   data () {
@@ -52,29 +52,25 @@ export default {
     }
   },
   mounted () {
-    // 这里应该是要发送请求 获取对应title的一系列数据
-  //   data () {
-  //     return {
-  //       res: '' // 创建对象
-  //     }
-  //   },
-  //   mounted () {
-  //     let params = new URLSearchParams()
-  //     params.append('id', this.$route.query)
-  //     axios({
-  //       method: 'post',
-  //       url: '',
-  //       data: params
-  //     }).then((response) => {
-  //       this.res = response.data
-  //     })
-  //   }
     if (this.title === 'LumbarMuscleDegeneration') {
       this.items = this.LumbarMuscleDegeneration
     }
     if (this.title === 'Fasciitis') {
       this.items = this.Fasciitis
     }
+
+    // let params = {'name': '肌肉拉伤'}
+    var param = new URLSearchParams()
+    param.append('name', '肌肉拉伤')
+    axios({
+      method: 'post',
+      url: 'http://localhost:8080/WHU_WEB_BE_war/GetIllnessDetail',
+      data: param
+    }).then((response) => {
+      console.log(response.data)
+    }).catch((error) => {
+      console.log(error)
+    })
   },
   methods: {
     handleChange (val) {
