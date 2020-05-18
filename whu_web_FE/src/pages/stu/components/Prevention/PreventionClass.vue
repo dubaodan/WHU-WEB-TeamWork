@@ -92,24 +92,26 @@ export default {
     }
   },
   mounted () {
-    if (this.title === '肌肉拉伤') {
-      this.items = this.jiroulashang
-    }
-    if (this.title === '腰肌劳损') {
-      this.items = this.yaojilaosun
-    }
-    if (this.title === '骨质疏松症') {
-      this.items = this.guzhishusong
-    }
+    // if (this.title === '肌肉拉伤') {
+    //   this.items = this.jiroulashang
+    // }
+    // if (this.title === '腰肌劳损') {
+    //   this.items = this.yaojilaosun
+    // }
+    // if (this.title === '骨质疏松症') {
+    //   this.items = this.guzhishusong
+    // }
     // let params = {'name': '肌肉拉伤'}
+    let that = this
     var param = new URLSearchParams()
-    param.append('name', '肌肉拉伤')
+    param.append('name', this.title)
     axios({
       method: 'post',
       url: 'http://localhost:8080/WHU_WEB_BE_war/GetIllnessDetail',
       data: param
     }).then((response) => {
-      console.log(response.data)
+      console.log(response.data[0])
+      that.items = response.data[0]
     }).catch((error) => {
       console.log(error)
     })
