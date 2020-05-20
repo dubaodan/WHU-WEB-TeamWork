@@ -56,10 +56,10 @@ export default{
   },
   mounted () {
     let params = new URLSearchParams()
-    params.append('id', this.$route.query)
+    params.append('id', this.$route.query.imgid)
     axios({
       method: 'post',
-      url: '我是servlet',
+      url: 'http://localhost:8080/WHU_WEB_BE_war/GetMuscleAndComment',
       data: params
     }).then((response) => {
       this.res = response.data

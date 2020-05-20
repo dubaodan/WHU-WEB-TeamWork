@@ -33,7 +33,7 @@ export default{
         fluid: true,
         sources: [{
           // url地址
-          src: this.res.data.muscle.video,
+          src: 'http://localhost:8080/static/' + this.$route.query.imgid + '.mp4',
           type: 'video/mp4'
         }],
         // 你的封面地址
