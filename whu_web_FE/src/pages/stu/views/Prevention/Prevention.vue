@@ -39,6 +39,19 @@ export default {
           Title: '骨质疏松症',
           Name: '骨质疏松症',
           Description: '骨质疏松症（osteoporosis）是由于多种原因导致的骨密度和骨质量下降，骨微结构破坏，造成骨脆性增加，从而容易发生骨折的全身性骨病。'
+        },
+        {
+          ImgSrc: 'https://s1.ax1x.com/2020/05/21/YqnNN9.jpg',
+          Title: '髌腱炎',
+          Name: '髌腱炎',
+          Description: '髌腱是指连接你的髌骨 (即膝盖骨) 与小腿胫骨之间的肌腱。当它受损或出现炎症时，称为髌腱炎 (Patellar tendinitis)。'
+        },
+        {
+          ImgSrc: 'https://s1.ax1x.com/2020/05/21/Yqu38I.jpg',
+          Title: '半月板撕裂',
+          Name: '半月板撕裂',
+          Description: '半月板撕裂 (Torn meniscus) 是指你膝盖中的一个或两个半月形的软骨 (下图中的红色部位) 发生了损伤。\n' +
+              '\n'
         }
       ]
     }
