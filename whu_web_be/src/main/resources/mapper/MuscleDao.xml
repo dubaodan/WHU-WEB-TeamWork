@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.MuscleDao">
+    <resultMap id="MuscleResult" type="com.example.demo.domain.Muscle">
+        <result property="muscleId" column="mucle_id"></result>
+    </resultMap>
+
+    <resultMap id="muscleId" type="java.lang.Integer"></resultMap>
+
+    <select id="getIdByName" resultMap="muscleId">
+        select mucle_id from mucle
+        where name = #{name}
+    </select>
+
+    <select id="getMuscleByName" resultMap="MuscleResult">
+        select * from mucle
+        where name = #{name}
+    </select>
+
+</mapper>
