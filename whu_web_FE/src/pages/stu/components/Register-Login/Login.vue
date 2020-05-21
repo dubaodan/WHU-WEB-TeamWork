@@ -115,7 +115,8 @@ export default {
     return {
       ID: '',
       password: '',
-      isBtnLoading: false,}
+      isBtnLoading: false
+    }
   }
 }
 </script>
