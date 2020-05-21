@@ -15,7 +15,8 @@
     <div class="right_part">
     <el-button v-show="!  isLogin () " type="primary" @click="registerVisible = true">注册</el-button>
     <el-button v-show="!  isLogin () " type="primary" @click="loginVisible = true">登录</el-button>
-<!--      用于注册登录的弹窗-->
+    <el-button v-show="!!isLogin () " type="primary" @click.native="logout">登出</el-button>
+      <!--      用于注册登录的弹窗-->
     <el-dialog title="登录" :visible.sync="loginVisible" :before-close="handleClose">
         <login></login>
     </el-dialog>
@@ -23,15 +24,6 @@
         <register></register>
     </el-dialog>
 <!--      用于用户选项的下拉列表-->
-    <el-dropdown>
-    <span class="el-dropdown-link" v-show="  isLogin () ">
-      <i class="el-icon-user"></i>Customer_Name<i class="el-icon-arrow-down el-icon--right"></i>
-    </span>
-    <el-dropdown-menu slot="dropdown" >
-      <el-dropdown-item @click.native="Setting">Setting</el-dropdown-item>
-      <el-dropdown-item @click.native="Loginout">Log out</el-dropdown-item>
-    </el-dropdown-menu>
-    </el-dropdown>
     </div>
   </el-menu>
   </div>
@@ -89,6 +81,9 @@ export default {
     //   //   return false
     //   // }
     // },
+    logout () {
+
+    },
     Setting () {
       this.$router.push({path: '/Setting/Profile'})
     },
