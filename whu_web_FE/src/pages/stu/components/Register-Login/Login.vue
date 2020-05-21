@@ -47,6 +47,7 @@ export default {
         return
       }
       // eslint-disable-next-line no-undef
+      // eslint-disable-next-line no-unused-vars
       let params = {
         'username': this.ID,
         'password': this.password
@@ -61,18 +62,6 @@ export default {
       })
         .then((response) => {
           console.log(response.data)
-          if (response.data === 'Success') {
-            this.$message.success('登陆成功')
-            this.$store.dispatch('Login', params)
-              .then(() => {
-                this.$router.push({ path: '/' })
-              })
-              .catch((error) => {
-                console.log(error.response)
-              })
-          } else {
-            this.$message.error('用户名或密码错误')
-          }
         })
         .catch(function (error) {
           console.log(error)
