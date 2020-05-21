@@ -9,6 +9,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 import FoodDetail from '@/pages/stu/components/Food/Food'
 export default {
   name: 'Food',
@@ -17,6 +18,7 @@ export default {
   },
   data () {
     return {
+      // FoodList: ''
       FoodList: [
         {
           ImgSrc: 'https://s1.ax1x.com/2020/04/24/JrEFsJ.png',
@@ -57,6 +59,18 @@ export default {
       ]
     }
   }
+  // mounted () {
+  //   let that = this
+  //   axios({
+  //     method: 'get',
+  //     url: 'http://localhost:8080/food/getFoodList'
+  //   }).then((response) => {
+  //     console.log(response.data.data)
+  //     that.FoodList = response.data.data
+  //   }).catch(function (error) {
+  //     console.log(error)
+  //   })
+  // }
 }
 </script>
 

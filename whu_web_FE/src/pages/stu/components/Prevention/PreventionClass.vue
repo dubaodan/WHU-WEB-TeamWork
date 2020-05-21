@@ -110,8 +110,8 @@ export default {
       url: 'http://localhost:8080/illness/getIllnessDetail',
       data: param
     }).then((response) => {
-      console.log(response.data[0])
-      that.items = response.data[0]
+      console.log(response.data.data[0])
+      that.items = response.data.data[0]
     }).catch((error) => {
       console.log(error)
     })

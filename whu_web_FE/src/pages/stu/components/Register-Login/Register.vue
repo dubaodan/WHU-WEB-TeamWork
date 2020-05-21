@@ -63,9 +63,17 @@ export default {
       })
         .then((response) => {
           console.log(response.data)
+          if (response.data.resultCode === 200) {
+            alert(response.data.message)
+            location.reload()
+          }
+          if (response.data.resultCode === 500) {
+            alert(response.data.message)
+          }
         })
         .catch(function (error) {
           console.log(error)
+          alert('注册失败')
         })
     }
   },
