@@ -56,9 +56,7 @@ export default {
       param.append('password', this.password)
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8081/login',
-        contentType: 'text',
-        dataType: 'text/html;charset=UTF-8',
+        url: 'http://localhost:8080/user/login',
         data: param
       })
         .then((response) => {
@@ -79,28 +77,6 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
-      axios({
-
-        method: 'post',
-        url: 'http://127.0.0.1:8080/MuscleRTest_war_exploded/LoginServlet',
-        contentType: 'text',
-        dataType: 'json',
-        data: params
-
-      }).then((response) => {
-        let data = response.data
-        console.log(data)
-        if (data === 'OK') {
-          console.log(this)
-          this.visible = false
-          this.close()
-          // window.visible(false)
-        } else {
-          this.$message.error('用户名或密码错误')
-        }
-      }).catch(function (error) {
-        console.log(error)
-      })
     }
   },
   // created () {
