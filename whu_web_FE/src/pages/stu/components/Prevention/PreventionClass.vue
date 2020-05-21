@@ -112,6 +112,7 @@ export default {
     }).then((response) => {
       console.log(response.data.data[0])
       that.items = response.data.data[0]
+      // that.items = [response.data.data[0].reason, response.data.data[0].behave, response.data.data[0].prevend]
     }).catch((error) => {
       console.log(error)
     })
@@ -126,8 +127,10 @@ export default {
     change (val) {
       if (val === 'reason') { return '原因' }
       if (val === 'behave') { return '表现' }
-      if (val === 'curve') { return '治疗' }
+      if (val === 'cure') { return '治疗' }
       if (val === 'prevend') { return '预防' }
+      if (val === 'name') { return '病称' }
+      if (val === 'brief') { return '简介' }
     }
   }
 }
