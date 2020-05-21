@@ -61,7 +61,11 @@ export default {
         data: param
       })
         .then((response) => {
-          console.log(response.data.data.userName)
+          console.log(response.data.resultCode)
+          if (response.data.resultCode === 200) {
+            sessionStorage.setItem('isLogin', true)
+            location.reload()
+          }
           // sessionStorage.setItem()
         })
         .catch(function (error) {

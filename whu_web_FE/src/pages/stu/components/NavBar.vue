@@ -42,7 +42,7 @@ export default {
   methods: {
     // 弹窗退出函数
     isLogin () {
-      let tem = !!localStorage.getItem('isLogin')
+      let tem = !!sessionStorage.getItem('isLogin')
       if (tem === true) {
         this.LoginCondition = true
         return true
