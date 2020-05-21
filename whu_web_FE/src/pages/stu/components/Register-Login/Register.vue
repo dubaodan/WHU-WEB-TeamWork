@@ -6,10 +6,10 @@
       <input v-model.trim="ID" placeholder=" 请输入账号 ">
     </div>
     <div class="item">
-      <input type="password" v-model.trim="inputContent1" placeholder=" 请输入密码">
+      <input type="password" v-model.trim="password" placeholder=" 请输入密码">
     </div>
     <div class="item">
-      <input type="password" v-model.trim="inputContent2" placeholder=" 请再次输入密码">
+      <input type="password" v-model.trim="confirmPassword" placeholder=" 请再次输入密码">
     </div>
     <div>
       <el-button type="primary" @click="register">注册</el-button>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Register',
   methods: {
@@ -34,6 +35,38 @@ export default {
     },
     // 注册界面登录按钮函数
     register () {
+      if (!this.ID) {
+        // this.$message.error 常用于主动操作的反馈提示
+        this.$message.error('请输入用户名')
+        return
+      }
+      if (this.password == null) {
+        this.$message.error('请输入密码')
+        return
+      }
+      if (this.password !== this.confirmPassword) {
+        this.$message.error('两次输入密码不一致')
+      }
+      // eslint-disable-next-line no-undef
+      // eslint-disable-next-line no-unused-vars
+      let params = {
+        'username': this.ID,
+        'password': this.password
+      }
+      var param = new URLSearchParams()
+      param.append('username', this.ID)
+      param.append('password', this.password)
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/user/register',
+        data: param
+      })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   },
   data () {
