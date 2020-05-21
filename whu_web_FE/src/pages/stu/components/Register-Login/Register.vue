@@ -58,7 +58,7 @@ export default {
       param.append('password', this.password)
       axios({
         method: 'post',
-        url: 'http://localhost:8080/user/login',
+        url: 'http://localhost:8080/user/register',
         data: param
       })
         .then((response) => {

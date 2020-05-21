@@ -107,7 +107,7 @@ export default {
     param.append('name', this.title)
     axios({
       method: 'post',
-      url: 'http://localhost:8080/WHU_WEB_BE_war/GetIllnessDetail',
+      url: 'http://localhost:8080/illness/getIllnessDetail',
       data: param
     }).then((response) => {
       console.log(response.data[0])

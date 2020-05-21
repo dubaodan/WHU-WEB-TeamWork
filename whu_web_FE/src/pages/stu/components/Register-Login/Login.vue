@@ -61,7 +61,8 @@ export default {
         data: param
       })
         .then((response) => {
-          console.log(response.data)
+          console.log(response.data.data.userName)
+          // sessionStorage.setItem()
         })
         .catch(function (error) {
           console.log(error)
