@@ -2,7 +2,7 @@
   <el-collapse v-model="activeNames" @change="handleChange"  accordion>
     <el-page-header @back="goBack" :content=this.$route.params.id>
     </el-page-header>
-    <el-collapse-item v-for="(value,name,index) in items" v-bind:key="index" :title=name :name=index>
+    <el-collapse-item v-for="(value,name,index) in items" v-bind:key="index" :title=change(name) :name=index>
       <span v-html="value"></span>
     </el-collapse-item>
   </el-collapse>
@@ -92,15 +92,15 @@ export default {
     }
   },
   mounted () {
-    // if (this.title === '肌肉拉伤') {
-    //   this.items = this.jiroulashang
-    // }
-    // if (this.title === '腰肌劳损') {
-    //   this.items = this.yaojilaosun
-    // }
-    // if (this.title === '骨质疏松症') {
-    //   this.items = this.guzhishusong
-    // }
+    if (this.title === '肌肉拉伤') {
+      this.items = this.jiroulashang
+    }
+    if (this.title === '腰肌劳损') {
+      this.items = this.yaojilaosun
+    }
+    if (this.title === '骨质疏松症') {
+      this.items = this.guzhishusong
+    }
     // let params = {'name': '肌肉拉伤'}
     let that = this
     var param = new URLSearchParams()
@@ -122,6 +122,12 @@ export default {
     },
     goBack () {
       this.$router.push('/Prevention')
+    },
+    change (val) {
+      if (val === 'reason') { return '原因' }
+      if (val === 'behave') { return '表现' }
+      if (val === 'curve') { return '治疗' }
+      if (val === 'prevend') { return '预防' }
     }
   }
 }
