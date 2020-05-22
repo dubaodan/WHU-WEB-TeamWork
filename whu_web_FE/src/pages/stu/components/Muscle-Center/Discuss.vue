@@ -26,7 +26,7 @@ export default {
         {
           blogId: 1,
           commentUser: {
-            blogId: 1,
+            userId: 1,
             nickName: '健身小白',
             avatar: 'http://qzapp.qlogo.cn/qzapp/101483738/6637A2B6611592A44A7699D14E13F7F7/50'
           },
@@ -34,15 +34,15 @@ export default {
           createDate: '2020-3-23 17:36:02',
           childrenList: [
             {
-              blogId: 2,
+              blogId: 1,
               commentUser: {
-                blogId: 2,
+                userId: 2,
                 nickName: '健身达人',
                 avatar: ''
               },
               targetUser: {
-                blogId: 1,
-                nickName: '健身达人',
+                userId: 1,
+                nickName: '健身小白',
                 avatar: 'http://qzapp.qlogo.cn/qzapp/101483738/6637A2B6611592A44A7699D14E13F7F7/50'
               },
               content: '加油，不要放弃!',
