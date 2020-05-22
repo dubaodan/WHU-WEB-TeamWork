@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+axios.default.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 export default {
   name: 'Login',
@@ -58,7 +59,8 @@ export default {
       axios({
         method: 'post',
         url: 'http://localhost:8080/user/login',
-        data: param
+        data: param,
+        withCredentials: true
       })
         .then((response) => {
           console.log(response.data.resultCode)

@@ -10,6 +10,7 @@
 
 <script>
 import axios from 'axios'
+axios.defaults.withCredentials = true
 export default {
   name: 'PreventionClass',
   data () {
@@ -154,7 +155,8 @@ export default {
     axios({
       method: 'post',
       url: 'http://localhost:8080/illness/getIllnessDetail',
-      data: param
+      data: param,
+      withCredentials: true
     }).then((response) => {
       console.log(response.data.data[0])
       that.items = response.data.data[0]

@@ -48,6 +48,7 @@
 
 <script>
 import axios from 'axios'
+axios.defaults.withCredentials = true
 export default{
   data () {
     return {
@@ -60,7 +61,8 @@ export default{
     axios({
       method: 'post',
       url: 'http://localhost:8080/WHU_WEB_BE_war/GetMuscleAndComment',
-      data: params
+      data: params,
+      withCredentials: true
     }).then((response) => {
       this.res = response.data
     })

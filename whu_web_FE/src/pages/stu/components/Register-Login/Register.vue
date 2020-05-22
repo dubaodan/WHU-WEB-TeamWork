@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+axios.defaults.withCredentials = true
 export default {
   name: 'Register',
   methods: {
@@ -59,7 +60,8 @@ export default {
       axios({
         method: 'post',
         url: 'http://localhost:8080/user/register',
-        data: param
+        data: param,
+        withCredentials: true
       })
         .then((response) => {
           console.log(response.data)
