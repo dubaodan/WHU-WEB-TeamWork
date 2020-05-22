@@ -1,58 +1,209 @@
 <template>
-  <div>
-    <br><br><br><br>
-    <div class="title">
-    <h1>讨论</h1>
-    </div>
-    <div class="pos">
-    <div class="article">
-    <h3>健身小白</h3>
-    <h5>刚开始学习卧推的时候，一定要注意收紧肩胛骨啊！</h5>
-    <h5>教练总是纠正我，但还是很难一下子改正过来...</h5>
-    </div>
-    <br>
-    <div class="article">
-    <h3>挺举达人</h3>
-    <h5>对于新手来说，从锻炼胸肌开始入门是个不错的选择。</h5>
-    <h5>极短时间内效果比较明显，也能为之后腰腹训练打下基础！</h5>
-    </div>
-    </div>
+  <div id="commentCard">
+    <el-card id="comment">
+      <pt_comment @doSend="doSend"
+                  @doChidSend="doChidSend"
+                  :commentList="commentList"
+                  :commentNum="commentNum"
+                  :avatar="avatar"
+      />
+    </el-card>
   </div>
 </template>
 
 <script>
+import comment from 'hbl-comment'
+import {postRequest} from '../utils/axiosUtils'
+import {localDateTimeFormat} from '../utils/dateTimeUtil'
+import {createNamespacedHelpers} from 'vuex'
+const {mapGetters} = createNamespacedHelpers('userInfo')
 export default {
-  name: 'Article',
+  name: 'commentCard',
   data () {
     return {
-      msg: 'Article'
+      blogId: '',
+      commentList: [
+        {
+          blogId: 1,
+          commentUser: {
+            userId: 1,
+            nickName: '健身小白',
+            avatar: 'http://qzapp.qlogo.cn/qzapp/101483738/6637A2B6611592A44A7699D14E13F7F7/50'
+          },
+          content: '健身贵在坚持[哈哈][哈哈]',
+          createDate: '2020-3-23 17:36:02',
+          childrenList: [
+            {
+              blogId: 1,
+              commentUser: {
+                userId: 2,
+                nickName: '健身达人',
+                avatar: ''
+              },
+              targetUser: {
+                userId: 1,
+                nickName: '健身小白',
+                avatar: 'http://qzapp.qlogo.cn/qzapp/101483738/6637A2B6611592A44A7699D14E13F7F7/50'
+              },
+              content: '加油，不要放弃!',
+              createDate: '2020-3-24 17:45:26'
+            }
+          ]
+        }
+      ],
+      commentNum: 1,
+      avatar: ''
     }
+  },
+  mounted () {
+    this.blogId = this.$route.params.id
+    this.avatar = this.getAvatar
+    this.load()
+  },
+  components: {
+    pt_comment: comment
+  },
+  methods: {
+    load () {
+      const url = 'discuss/loadDiscussByBlogId'
+      let params = {
+        blogId: this.blogId
+      }
+      postRequest(url, params).then(resp => {
+        let result = resp.data
+        if (result.code === 200) {
+          let valueList = result.data
+          if (valueList.length > 0) {
+            this.pushIntoDiscussList(valueList)
+          } else {
+            // 评论为空
+          }
+        } else {
+          this.$alert('评论加载失败!', '失败!')
+        }
+      }, resp => {
+        this.$alert('服务器维护中', '加载评论失败!')
+      })
+    },
+    // 发送评论
+    doSend (content) {
+      let params = {
+        'content': content,
+        'userId': this.getUserId,
+        'blogId': this.blogId
+      }
+      const url = '/discuss/sendDiscuss'
+      postRequest(url, params).then(resp => {
+        let result = resp.data
+        if (result.code === 200) {
+          this.commentList.unshift({
+            id: '0',
+            commentUser: {
+              id: this.getUserId,
+              nickName: this.getUsername,
+              avatar: this.getAvatar
+            },
+            content: content,
+            createDate: '刚才',
+            childrenList: []
+          })
+        } else {
+          this.$alert('发表评论失败!', '失败!')
+        }
+      }, resp => {
+        // this.loading = false;
+        this.$alert('服务器维护中', '失败!')
+      })
+    },
+    // 发送回复
+    doChidSend (content, commentUserId, commentId) {
+      let params = {
+        'content': content,
+        'targetUserId': commentUserId,
+        'discussId': commentId,
+        'userId': this.getUserId
+      }
+      const url = '/reply/sendReply'
+      postRequest(url, params).then(resp => {
+        let result = resp.data
+        if (result.code === 200) {
+        } else {
+          this.$alert('发表评论失败!', '失败!')
+        }
+      }, resp => {
+        this.$alert('服务器维护中', '失败!')
+      })
+    },
+    // 向commentList添加
+    pushIntoDiscussList (list) {
+      let result = []
+      for (let values of list) {
+        this.commentNum++
+        let item = {
+          id: '',
+          commentUser: {
+            id: '',
+            nickName: '',
+            avatar: ''
+          },
+          content: '',
+          createDate: '',
+          childrenList: []
+        }
+        item.id = values.discuss.id
+        item.commentUser.id = values.discuss.userId
+        item.commentUser.nickName = values.username
+        item.commentUser.avatar = values.avatar
+        item.content = values.discuss.content
+        item.createDate = localDateTimeFormat(values.discuss.createDate)
+        item.childrenList = values.replyPojoList.length > 0
+          ? this.pushIntoReplyList(values.replyPojoList) : []
+        this.commentNum += values.replyPojoList.length
+        result.push(item)
+      }
+      this.commentList = result
+    },
+    pushIntoReplyList (replyPojoList) {
+      let result = []
+      for (let item of replyPojoList) {
+        let reply = {
+          id: 0,
+          commentUser: {
+            id: 0,
+            nickName: '',
+            avatar: ''
+          },
+          targetUser: {
+            id: 0,
+            nickName: '',
+            avatar: ''
+          },
+          content: '',
+          createDate: ''
+        }
+        reply.id = item.replyId
+        reply.content = item.content
+        reply.createDate = localDateTimeFormat(item.createDate)
+        reply.commentUser.id = item.replyUser.id
+        reply.commentUser.nickName = item.replyUser.username
+        reply.commentUser.avatar = item.replyUser.avatar
+        reply.targetUser.id = item.targetUser.id
+        reply.targetUser.nickName = item.targetUser.username
+        reply.targetUser.avatar = item.targetUser.avatar
+        result.push(reply)
+      }
+      return result
+    }
+  },
+  props: [],
+  computed: {
+    ...mapGetters(['getUserId', 'getUsername', 'getAvatar'])
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.title {
-  font-weight: normal;
-  text-align:center;
-  font-family: 'SimSun';
-}
-
-.article {
-text-align:left;
-font-family:'KaiTi';
-}
-
-.article{
-     outline: none;
-     width: 80%;
-     border-radius: 5px;
-     box-shadow: 0 0 0 2px #FAEBD7;
-
-}
-
-.pos{
-    margin-left: 20%;
-}
+  #comment {
+    margin-top: 20px;
+  }
 </style>

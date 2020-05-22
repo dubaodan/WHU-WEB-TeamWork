@@ -22,6 +22,7 @@ import Router from 'vue-router'
 import VideoPlayer from 'vue-video-player'
 
 Vue.prototype.$axios = axios
+axios.defaults.withCredentials = true
 
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')

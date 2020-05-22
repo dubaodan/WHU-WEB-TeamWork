@@ -11,12 +11,6 @@
       <div id="PW" class="item">
         <el-input type="password" v-model.trim="password" placeholder=" 请输入密码"></el-input>
       </div>
-      <div class="item">
-        <el-radio-group v-model="radio">
-        <el-radio v-model="radio" label="stu">顾客</el-radio>
-        <el-radio v-model="radio" label="tea">管理员</el-radio>
-        </el-radio-group>
-      </div>
       <el-button class="login_bt" type="primary" @click="login" round :loading="isBtnLoading">登录</el-button>
 <!--      <el-button class="login_bt" type="primary" @click="cancel" round>取消</el-button>-->
     </div>
@@ -26,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+axios.default.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 export default {
   name: 'Login',
@@ -53,6 +48,7 @@ export default {
         return
       }
       // eslint-disable-next-line no-undef
+      // eslint-disable-next-line no-unused-vars
       let params = {
         'username': this.ID,
         'password': this.password
@@ -62,51 +58,21 @@ export default {
       param.append('password', this.password)
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8081/login',
-        contentType: 'text',
-        dataType: 'text/html;charset=UTF-8',
-        data: param
+        url: 'http://localhost:8080/user/login',
+        data: param,
+        withCredentials: true
       })
         .then((response) => {
-          console.log(response.data)
-          if (response.data === 'Success') {
-            this.$message.success('登陆成功')
-            this.$store.dispatch('Login', params)
-              .then(() => {
-                this.$router.push({ path: '/' })
-              })
-              .catch((error) => {
-                console.log(error.response)
-              })
-          } else {
-            this.$message.error('用户名或密码错误')
+          console.log(response.data.resultCode)
+          if (response.data.resultCode === 200) {
+            sessionStorage.setItem('isLogin', true)
+            location.reload()
           }
+          // sessionStorage.setItem()
         })
         .catch(function (error) {
           console.log(error)
         })
-      axios({
-
-        method: 'post',
-        url: 'http://127.0.0.1:8080/MuscleRTest_war_exploded/LoginServlet',
-        contentType: 'text',
-        dataType: 'json',
-        data: params
-
-      }).then((response) => {
-        let data = response.data
-        console.log(data)
-        if (data === 'OK') {
-          console.log(this)
-          this.visible = false
-          this.close()
-          // window.visible(false)
-        } else {
-          this.$message.error('用户名或密码错误')
-        }
-      }).catch(function (error) {
-        console.log(error)
-      })
     }
   },
   // created () {
@@ -121,8 +87,7 @@ export default {
     return {
       ID: '',
       password: '',
-      isBtnLoading: false,
-      radio: 'stu'
+      isBtnLoading: false
     }
   }
 }

@@ -6,21 +6,10 @@
       <input v-model.trim="ID" placeholder=" 请输入账号 ">
     </div>
     <div class="item">
-      <input type="password" v-model.trim="inputContent" placeholder=" 请输入密码">
+      <input type="password" v-model.trim="password" placeholder=" 请输入密码">
     </div>
     <div class="item">
-      <input type="password" v-model.trim="inputContent" placeholder=" 请再次输入密码">
-    </div>
-    <div class="item">
-      <input v-model.trim="inputContent" placeholder=" 请输入邮箱">
-    </div>
-    <div class="item">
-      <el-radio-group v-model="radio">
-        // v-model 绑定变量，意味着其值为Radio的label属性的值
-        // label 可以是String、Number或Boolean
-        <el-radio v-model="radio" label="stu">顾客</el-radio>
-        <el-radio v-model="radio" label="tea">管理员</el-radio>
-      </el-radio-group>
+      <input type="password" v-model.trim="confirmPassword" placeholder=" 请再次输入密码">
     </div>
     <div>
       <el-button type="primary" @click="register">注册</el-button>
@@ -30,6 +19,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+axios.defaults.withCredentials = true
 export default {
   name: 'Register',
   methods: {
@@ -45,13 +36,55 @@ export default {
     },
     // 注册界面登录按钮函数
     register () {
+      if (!this.ID) {
+        // this.$message.error 常用于主动操作的反馈提示
+        this.$message.error('请输入用户名')
+        return
+      }
+      if (this.password == null) {
+        this.$message.error('请输入密码')
+        return
+      }
+      if (this.password !== this.confirmPassword) {
+        this.$message.error('两次输入密码不一致')
+      }
+      // eslint-disable-next-line no-undef
+      // eslint-disable-next-line no-unused-vars
+      let params = {
+        'username': this.ID,
+        'password': this.password
+      }
+      var param = new URLSearchParams()
+      param.append('username', this.ID)
+      param.append('password', this.password)
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/user/register',
+        data: param,
+        withCredentials: true
+      })
+        .then((response) => {
+          console.log(response.data)
+          if (response.data.resultCode === 200) {
+            alert(response.data.message)
+            location.reload()
+          }
+          if (response.data.resultCode === 500) {
+            alert(response.data.message)
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+          alert('注册失败')
+        })
     }
   },
   data () {
     return {
       // 新建了名为radio的数据模型，通过v-model把两个单选按钮都绑定radio
-      radio: 'stu'
-
+      ID: '',
+      inputContent1: '',
+      inputContent2: ''
     }
   }
 }

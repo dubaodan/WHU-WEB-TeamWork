@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserCommentDao">
+    <resultMap id="UserCommentResult" type="com.example.demo.domain.UserComment">
+        <result property="muscleId" column="mucle_id"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="commentId" column="comment_id"></result>
+    </resultMap>
+
+    <select id="getCommentByMuscleId" resultMap="UserCommentResult">
+        select * from usercomment where mucle_id = #{mId}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.FoodDetailDao">
+    <resultMap id="FoodDetailResult" type="com.example.demo.domain.FoodDetail">
+        <result column="name_detail" property="nameDetail"></result>
+        <result column="name" property="type"></result>
+    </resultMap>
+
+    <select id="getFoodDetailByType" resultMap="FoodDetailResult">
+        select * from fooddetail
+        where name = #{type}
+    </select>
+</mapper>

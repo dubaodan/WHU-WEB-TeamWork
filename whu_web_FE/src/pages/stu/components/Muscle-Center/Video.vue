@@ -10,9 +10,11 @@
 </template>
 
 <script>
-export default {
+import axios from 'axios'
+export default{
   data () {
     return {
+      res: '',
       playerOptions: {
         // 播放速度
         playbackRates: [0.5, 1.0, 1.5, 2.0],
@@ -31,11 +33,11 @@ export default {
         fluid: true,
         sources: [{
           // url地址
-          src: 'http://localhost:8080/static/chest.mp4',
+          src: 'http://localhost:8080/static/' + this.$route.query.imgid + '.mp4',
           type: 'video/mp4'
         }],
         // 你的封面地址
-        poster: 'http://localhost:8080/static/cover.jpg',
+        poster: './assets/cover.png',
         // 允许覆盖Video.js无法播放媒体源时显示的默认信息。
         notSupportedMessage: '此视频暂无法播放，请稍后再试',
         controlBar: {
@@ -46,8 +48,18 @@ export default {
           fullscreenToggle: true
         }
       }
-
     }
+  },
+  mounted () {
+    let params = new URLSearchParams()
+    params.append('id', this.$route.query)
+    axios({
+      method: 'post',
+      url: '我是servlet',
+      data: params
+    }).then((response) => {
+      this.res = response.data
+    })
   }
 }
 </script>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.IllnessDao">
+    <resultMap id="IllnessResult" type="com.example.demo.domain.Illness">
+        <result property="name" column="name"></result>
+        <result property="brief" column="brief"></result>
+        <result property="reason" column="reason"></result>
+        <result property="behave" column="behave"></result>
+        <result property="behave" column="behave"></result>
+        <result property="behave" column="behave"></result>
+    </resultMap>
+
+    <select id="getIllList" resultMap="IllnessResult">
+        select * from illness
+    </select>
+
+    <select id="getIllnessDetailByName" resultMap="IllnessResult">
+        select * from illness
+        where name like concat(concat('%',#{name}),'%')
+    </select>
+</mapper>
