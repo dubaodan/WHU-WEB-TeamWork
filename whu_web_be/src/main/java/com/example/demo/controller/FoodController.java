@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Food;
+import com.example.demo.domain.FoodDetail;
+import com.example.demo.service.FoodDetailService;
 import com.example.demo.service.FoodService;
 import com.example.demo.util.Result;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +16,9 @@ import java.util.List;
 public class FoodController {
     @Resource
     FoodService foodService;
+
+    @Resource
+    FoodDetailService foodDetailService;
 
     @GetMapping("/getFoodList")
     @ResponseBody
@@ -27,9 +30,29 @@ public class FoodController {
             result.setData(foods);
             result.setMessage("食物列表为空！");
         }
-        result.setResultCode(200);
-        result.setData(foods);
-        result.setMessage("查询成功");
+        else {
+            result.setResultCode(200);
+            result.setData(foods);
+            result.setMessage("查询成功");
+        }
+        return result;
+    }
+
+    @PostMapping("/getFoodDetail")
+    @ResponseBody
+    public Result getFoodDetail(@RequestParam("type")String type){
+        Result<List<FoodDetail>> result=new Result<>();
+        List<FoodDetail> foodDetails=foodDetailService.getFoodDetailByType(type);
+        if (foodDetails.size()==0){
+            result.setResultCode(200);
+            result.setData(null);
+            result.setMessage("当前种类食物列表为空");
+        }
+        else {
+            result.setResultCode(200);
+            result.setData(foodDetails);
+            result.setMessage("查询成功");
+        }
         return result;
     }
 }

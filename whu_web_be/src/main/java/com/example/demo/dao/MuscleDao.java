@@ -23,4 +23,11 @@ public interface MuscleDao {
      */
     String getNameById(Integer id);
 
+//    /**
+//     *
+//     * @param id
+//     * @return
+//     */
+//    Muscle getMuscleById(Integer id);
+
 }

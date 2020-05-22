@@ -37,6 +37,7 @@ public class MuscleCommentController {
         Integer mid=Integer.parseInt(muscleId);
         String name=muscleService.getNameById(mid);
         List<UserComment> userCommentList=userCommentService.getCommentByMuscleId(mid);
+        Muscle muscle=muscleService.getMuscleByName(name);
         Map<String,Object> res=new HashMap<>();
         List<Map<String,Object>> userCommentlistWithUserName=new ArrayList<>();
         for (UserComment userComment:userCommentList){
@@ -48,7 +49,7 @@ public class MuscleCommentController {
             uc.put("comment",comment);
             userCommentlistWithUserName.add(uc);
         }
-        res.put("muscle",name);
+        res.put("muscle",muscle);
         res.put("user",userCommentlistWithUserName);
         return res;
 
