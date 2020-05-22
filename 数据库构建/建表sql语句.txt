@@ -1,0 +1,63 @@
+CREATE TABLE `mucler`.`illness` (
+  `name` VARCHAR(30) NOT NULL,
+  `brief` VARCHAR(512) NULL,
+  `reason` VARCHAR(512) NULL,
+  `behave` VARCHAR(512) NULL,
+  `cure` VARCHAR(512) NULL,
+  `prevend` VARCHAR(512) NULL,
+  PRIMARY KEY (`name`));
+
+CREATE TABLE `mucler`.`mucle` (
+  `mucle_Id` INT NOT NULL,
+  `name` VARCHAR(30) NULL,
+  `description` VARCHAR(512) NULL,
+  `method` VARCHAR(512) NULL,
+  `video` VARCHAR(128) NULL,
+  PRIMARY KEY (`mucle_Id`));
+
+CREATE TABLE `mucler`.`user` (
+  `user_Id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`user_Id`));
+
+CREATE TABLE `mucler`.`usercomment` (
+  `comment_Id` INT NOT NULL AUTO_INCREMENT,
+  `user_Id` INT NOT NULL,
+  `comment` VARCHAR(512) NULL,
+  `mucle_Id` INT NOT NULL,
+  PRIMARY KEY (`comment_Id`),
+  INDEX `mucle_Id_Fk_idx` (`mucle_Id` ASC) VISIBLE,
+  CONSTRAINT `user_Id_Fk`
+    FOREIGN KEY (`user_Id`)
+    REFERENCES `mucler`.`user` (`user_Id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `mucle_Id_Fk`
+    FOREIGN KEY (`mucle_Id`)
+    REFERENCES `mucler`.`mucle` (`mucle_Id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+CREATE TABLE `mucler`.`food` (
+  `name` VARCHAR(64) NOT NULL,
+  `title` VARCHAR(64) NULL,
+  `description` VARCHAR(512) NULL,
+  `img` VARCHAR(256) NULL,
+  PRIMARY KEY (`name`));
+
+CREATE TABLE `mucler`.`fooddetail` (
+  `name_detail` VARCHAR(128) NOT NULL,
+  `name` VARCHAR(64) NULL,
+  `detail` VARCHAR(128) NULL,
+  `img` VARCHAR(256) NULL,
+  PRIMARY KEY (`name_detail`),
+  INDEX `foodDetail_fkey1_idx` (`name` ASC) VISIBLE,
+  CONSTRAINT `foodDetail_fkey1`
+    FOREIGN KEY (`name`)
+    REFERENCES `mucler`.`food` (`name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+	
