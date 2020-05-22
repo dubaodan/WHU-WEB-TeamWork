@@ -51,7 +51,7 @@ export default {
           ]
         }
       ],
-      commentNum: 0,
+      commentNum: 1,
       avatar: ''
     }
   },
