@@ -7,7 +7,7 @@ import com.example.demo.service.MuscleService;
 import com.example.demo.service.UserCommentService;
 import com.example.demo.service.UserService;
 import com.example.demo.util.Result;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,10 +30,12 @@ public class MuscleCommentController {
 
     @PostMapping("/getComment")
     @ResponseBody
-    public Map<String, Object> getCommentByName(@RequestParam("name") String name){
+    public Map<String, Object> getCommentByName(@RequestParam("muscleId") String muscleId){
 
-        Muscle muscle=muscleService.getMuscleByName(name);
-        Integer mid=muscle.getMuscleId();
+
+        //Muscle muscle=muscleService.getMuscleByName(name);
+        Integer mid=Integer.parseInt(muscleId);
+        String name=muscleService.getNameById(mid);
         List<UserComment> userCommentList=userCommentService.getCommentByMuscleId(mid);
         Map<String,Object> res=new HashMap<>();
         List<Map<String,Object>> userCommentlistWithUserName=new ArrayList<>();
@@ -46,7 +48,7 @@ public class MuscleCommentController {
             uc.put("comment",comment);
             userCommentlistWithUserName.add(uc);
         }
-        res.put("muscle",muscle);
+        res.put("muscle",name);
         res.put("user",userCommentlistWithUserName);
         return res;
 

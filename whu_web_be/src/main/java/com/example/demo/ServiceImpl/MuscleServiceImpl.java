@@ -25,4 +25,11 @@ public class MuscleServiceImpl implements MuscleService {
     public Muscle getMuscleByName(String name){
         return muscleDao.getMuscleByName(name);
     }
+
+    @Override
+    public String getNameById(Integer id) {
+        return muscleDao.getNameById(id);
+    }
+
+
 }

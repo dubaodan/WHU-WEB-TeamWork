@@ -27,4 +27,6 @@ public interface UserDao {
      */
 
     Integer register(String username,String password);
+
+    User getUserByName(String username);
 }

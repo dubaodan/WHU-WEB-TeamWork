@@ -3,9 +3,12 @@
 <mapper namespace="com.example.demo.dao.MuscleDao">
     <resultMap id="MuscleResult" type="com.example.demo.domain.Muscle">
         <result property="muscleId" column="mucle_id"></result>
+        <result property="name" column="name"></result>
     </resultMap>
 
     <resultMap id="muscleId" type="java.lang.Integer"></resultMap>
+
+    <resultMap id="name" type="java.lang.String"></resultMap>
 
     <select id="getIdByName" resultMap="muscleId">
         select mucle_id from mucle
@@ -15,6 +18,11 @@
     <select id="getMuscleByName" resultMap="MuscleResult">
         select * from mucle
         where name = #{name}
+    </select>
+
+    <select id="getNameById" resultMap="name">
+        select name from mucle
+        where mucle_id = #{id}
     </select>
 
 </mapper>

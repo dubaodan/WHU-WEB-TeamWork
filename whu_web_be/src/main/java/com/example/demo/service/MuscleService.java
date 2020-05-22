@@ -21,4 +21,11 @@ public interface MuscleService {
      */
     @Cacheable
     Muscle getMuscleByName(String name);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    String getNameById(Integer id);
 }

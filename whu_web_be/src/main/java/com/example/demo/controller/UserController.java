@@ -1,27 +1,34 @@
 package com.example.demo.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.demo.domain.User;
 import com.example.demo.service.UserService;
 import com.example.demo.util.Result;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
+@CrossOrigin(allowCredentials="true")
 public class UserController {
     @Resource
     UserService userService;
 
     @PostMapping("/login")
     @ResponseBody
-    public Result login(@RequestParam("username")String username, @RequestParam("password") String password, HttpSession session){
+
+    public Result login(HttpServletRequest request){
+        String username=request.getParameter("username");
+        String password=request.getParameter("password");
+        HttpSession session=request.getSession();
+        System.out.println(session.getId());
+        System.out.println(session.getAttribute("loginUser"));
         Result<User> userResult=new Result<>();
         User user=userService.login(username,password);
         userResult.setData(user);
@@ -39,7 +46,8 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseBody
-    public Result register(@RequestParam("username")String username, @RequestParam("password") String password, HttpSession session){
+    public Result register(@RequestParam("username")String username, @RequestParam("password") String password, @NonNull HttpSession session){
+
         Result<String> userResult=new Result<>();
         Integer affectedRows=0;
         try {
@@ -49,6 +57,7 @@ public class UserController {
             userResult.setResultCode(500);
         }
         if (affectedRows!=0){
+            System.out.println(session.getId());
             userResult.setMessage("注册成功" );
             userResult.setResultCode(200);
         }else {
