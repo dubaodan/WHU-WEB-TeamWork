@@ -1,6 +1,7 @@
 name_detail,name,detail,img
 咖啡粉，速溶咖啡粉,Drink,218大卡（100克）,https://static.ouj.com/hiyd_home/food/f4121ab337bc413fba741e8634a854cc.jpg
 巧克力,Snack,586大卡（100克）,https://static.ouj.com/hiyd_home/food/e2c5e92731134111bf5e4805ef206b8c.jpg
+牛奶,Milk,54（100克）,https://static.ouj.com/hiyd_home/food/d492fa5eb3fc48dfa1b9e4ae518d8a71.jpg
 玉米（鲜）又叫苞谷、珍珠米、棒子,MainFood,106大卡（100克可食部分）,https://s1.ax1x.com/2020/04/27/JfCmbF.jpg
 米饭,MainFood,116大卡（100克）,https://s1.ax1x.com/2020/04/27/JWzR9P.jpg
 色拉油，又叫沙拉油,Oil,898大卡（100克）,https://static.ouj.com/hiyd_home/food/43444797240e49b590ae7f44906e150a.jpg
@@ -10,6 +11,8 @@ name_detail,name,detail,img
 蛋糕（黄蛋糕）,Snack,320大卡（100克）,https://static.ouj.com/hiyd_home/food/445fcf5aaac944a997ac942ea00c398f.jpg
 西瓜,Vegetable,25大卡（100克）,https://static.ouj.com/hiyd_home/food/6ca1e6c121c94500a82fc56d303bb58c.jpg
 豆油，油，食用油,Oil,899大卡（100克）,https://static.ouj.com/hiyd_home/food/5b0d2ddfbba04e15bdfb969d3b806590.jpg
+酸奶,Milk,72（100克）,https://static.ouj.com/hiyd_home/food/1dc346122e4642eb9a926919c9f04f4b.jpg
+酸奶（脱脂）,Milk,64（100克）,https://static.ouj.com/hiyd_home/food/3f6dc22b055146efadb72713bf38407c.jpg
 雀巢咖啡MIX,Drink,450大卡（100克）,https://static.ouj.com/hiyd_home/food/ecc7bfd2e7384cfbb655fe1560176875.jpg
 饼干,Snack,433大卡（100克）,https://static.ouj.com/hiyd_home/food/00564488db53480ab8a4615b59d5c740.jpg
 馒头,MainFood,"221 大卡（100克）",https://s1.ax1x.com/2020/04/27/JfPZRI.jpg
